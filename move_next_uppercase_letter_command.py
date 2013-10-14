@@ -14,10 +14,11 @@ class MoveNextUppercaseLetterCommand(sublime_plugin.TextCommand):
 			m = re.search("[A-Z]", self.view.substr(line)[current_end_point - line_start_point + 1:])
 
 			move_to_point = current_end_point + m.start() + 1
-			self.view.sel().clear()
 			if (isSelectedMode(self.view)):
+				self.view.sel().clear()
 				self.view.sel().add(sublime.Region(current_start_point, move_to_point))
 			else:
+				self.view.sel().clear()
 				self.view.sel().add(move_to_point)
 
 
